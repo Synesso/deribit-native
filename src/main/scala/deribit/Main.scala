@@ -34,19 +34,11 @@ object Main {
       println("Usage: derebit [instrument1] [instrument2] ...")
       println("  e.g. derebit BTC-24JUL20-8500-P")
     } else {
-      //    val instruments =
-      //      List("", "BTC-31JUL20-8500-P", "BTC-24JUL20-10000-C", "BTC-31JUL20-10000-C")
-      //      List("BTC-13MAR20-7500-P", "BTC-20MAR20-7500-P", "BTC-27MAR20-7500-P",
-      //        "BTC-15MAY20-8500-P", "BTC-15MAY20-8000-P", "BTC-22MAY20-8500-P", "BTC-29MAY20-8500-P")
       args.map(_.toUpperCase()).foreach { instrument =>
-        val filename = s"$instrument.csv"
-        println(filename)
-        val pw = new PrintWriter(new FileWriter(filename))
-        pw.println(Trade.csvHeader)
+        println(Trade.csvHeader)
         process(0, instrument) { trade =>
-          pw.println(trade.csv)
+          println(trade.csv)
         }
-        pw.close()
       }
     }
   }
